@@ -1,0 +1,83 @@
+export const users = [
+	{
+		id: 87,
+		label: "Berni Mayou",
+		email: "bern.mayour@mail.com",
+		avatar: "https://cdn.svar.dev/demos/assets/avatar/503723673.jpg",
+	},
+	{
+		id: 97,
+		label: "August Dvorak",
+		email: "dvor.august@gmail.com",
+		avatar: "https://cdn.svar.dev/demos/assets/avatar/375515968.jpg",
+	},
+	{
+		id: 98,
+		label: "Elly Soyer",
+		email: "elly.soyer@example",
+		avatar: "https://cdn.svar.dev/demos/assets/avatar/909471384.jpg",
+	},
+	{
+		id: 101,
+		label: "Patrick Roland",
+		email: "roll.and@gmail.com",
+		details: "Farmer",
+		visited: "2020-06-01T14:58:05Z",
+		registered: "2020-06-01T14:58:05Z",
+		avatar: "https://cdn.svar.dev/demos/assets/avatar/092352563.jpg",
+	},
+	{
+		id: 102,
+		label: "Petyr Baelish",
+		email: "big.finger@gmail.com",
+		avatar: "https://cdn.svar.dev/demos/assets/avatar/898151818.jpg",
+	},
+	{
+		id: 103,
+		label: "Ned Stark",
+		email: "winterhell@gmail.com",
+		avatar: "https://cdn.svar.dev/demos/assets/avatar/491902305.jpg",
+	},
+	{
+		id: 104,
+		label: "Lord Varys",
+		email: "little.birds@gmail.com",
+		avatar: "https://cdn.svar.dev/demos/assets/avatar/005471511.jpg",
+	},
+	{
+		id: 105,
+		label: "Daenerys Stormborn Targaryen",
+		email: "breaker.of.chains@gm.com",
+		avatar: "https://cdn.svar.dev/demos/assets/avatar/096793420.jpg",
+	},
+	{
+		id: 106,
+		label: "Francis Bacon",
+		email: "",
+		avatar: "https://cdn.svar.dev/demos/assets/avatar/865831461.jpg",
+	},
+	{
+		id: 107,
+		label: "Jon Snow",
+		email: "lord.crow@wall.com",
+		avatar: "https://cdn.svar.dev/demos/assets/avatar/268122171.jpg",
+	},
+	{
+		id: 108,
+		label: "Tyrion Lannister",
+		email: "80.y.o.in.bed@casterly",
+		avatar: "https://cdn.svar.dev/demos/assets/avatar/932427870.jpg",
+	},
+	{
+		id: 109,
+		label: "Jason",
+		email: "a.kosmovskiy@gmail.com",
+		avatar: "",
+	},
+];
+
+export const usersLarge = Array.from({ length: 10000 }, (_, i) => ({
+	id: i,
+	label: `User ${i}`,
+	avatar: "https://cdn.svar.dev/demos/assets/avatar/005471511.jpg",
+}));
