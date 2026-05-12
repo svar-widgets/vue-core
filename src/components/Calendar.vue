@@ -1,4 +1,5 @@
 <script setup>
+import { watch } from "vue";
 import Panel from "./calendar/Panel.vue";
 import Locale from "../Locale.vue";
 
@@ -17,13 +18,15 @@ function fixCurrent(force) {
   if (!current.value || force) current.value = value.value ? new Date(value.value) : new Date();
   current.value.setDate(1);
 }
-fixCurrent(value.value);
+
+watch(() => value.value, () => {
+  fixCurrent(true);
+}, { immediate: true });
 
 function change(v) {
   const x = v.value;
   if (x) {
     value.value = new Date(x);
-    fixCurrent(true);
   } else {
     value.value = null;
   }
