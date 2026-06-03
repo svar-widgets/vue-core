@@ -19,6 +19,7 @@ const props = defineProps({
   placeholder: { default: '' },
   css: { default: '' },
   title: { default: '' },
+  tooltip: {},
   format: { default: '' },
   months: { default: 2 },
   buttons: { default: () => ['clear', 'today'] },
@@ -100,8 +101,9 @@ onBeforeUnmount(() => {
     @click="popup = true"
   >
     <Text
-      :css="props.css"
+      :css="`wx-date-input ${props.css}`"
       :title="props.title"
+      :tooltip="props.tooltip"
       :value="formattedValue"
       :id="props.id"
       :readonly="!props.editable"
@@ -110,7 +112,6 @@ onBeforeUnmount(() => {
       :error="props.error"
       :onchange="doInputChange"
       icon="wxi-calendar"
-      input-style="cursor: pointer; width: 100%; padding-right: calc(var(--wx-input-icon-size) + var(--wx-input-icon-indent) * 2);"
       :clear="props.clear"
     />
 

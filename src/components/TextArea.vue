@@ -7,9 +7,11 @@ const props = defineProps({
   id: {},
   placeholder: { default: "" },
   title: { default: "" },
+  tooltip: {},
   disabled: { default: false },
   error: { default: false },
   readonly: { default: false },
+  css: { default: "" },
   onchange: {},
 });
 
@@ -20,8 +22,7 @@ const value = defineModel("value", { default: "" });
 
 <template>
   <textarea
-    class="wx-textarea"
-    :class="{ 'wx-error': props.error }"
+    :class="['wx-textarea', props.css, { 'wx-error': props.error }]"
     :id="inputId"
     :disabled="props.disabled"
     :placeholder="props.placeholder"
@@ -30,6 +31,7 @@ const value = defineModel("value", { default: "" });
     v-model="value"
     @input="() => props.onchange && props.onchange({ value: value, input: true })"
     @change="() => props.onchange && props.onchange({ value: value })"
+    :data-tooltip-text="props.tooltip"
   ></textarea>
 </template>
 

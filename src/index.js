@@ -31,6 +31,7 @@ export { default as Calendar } from "./components/Calendar.vue";
 export { default as Month } from "./components/calendar/Month.vue";
 export { default as RangeCalendar } from "./components/RangeCalendar.vue";
 export { default as TimePicker } from "./components/TimePicker.vue";
+export { default as Tooltip } from "./components/Tooltip.vue";
 export { default as TwoState } from "./components/TwoState.vue";
 export { default as Modal } from "./components/Modal.vue";
 export { default as ModalArea } from "./components/ModalArea.vue";

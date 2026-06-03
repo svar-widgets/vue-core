@@ -9,6 +9,7 @@ const props = defineProps({
   icon: { default: "" },
   disabled: { default: false },
   title: { default: "" },
+  tooltip: {},
   text: { default: "" },
   onclick: {}
 });
@@ -42,6 +43,7 @@ const handleClick = (ev) => {
     :class="['wx-button ' + buttonCss, { 'wx-icon': props.icon && !hasChildren }]"
     :disabled="props.disabled"
     @click="handleClick"
+    :data-tooltip-text="props.tooltip"
   >
     <template v-if="props.icon">
       <i :class="props.icon"></i>

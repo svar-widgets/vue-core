@@ -17,6 +17,7 @@ defineOptions({ name: "CoreTimePicker", inheritAttrs: false });
 const props = defineProps({
   id: {},
   title: { default: "" },
+  tooltip: {},
   css: { default: "" },
   disabled: { default: false },
   error: { default: false },
@@ -126,14 +127,14 @@ function oncancel() {
   >
     <Text
       :id="inputId"
-      :css="props.css"
+      :css="`wx-date-input ${props.css}`"
       :title="props.title"
+      :tooltip="props.tooltip"
       :value="textValue"
       :readonly="true"
       :disabled="props.disabled"
       :error="props.error"
       icon="wxi-clock"
-      input-style="cursor: pointer; width: 100%; padding-right: calc(var(--wx-input-icon-size) + var(--wx-input-icon-indent) * 2);"
     />
 
     <Dropdown v-if="popup && !props.disabled" :oncancel="oncancel" v-bind="toDateDropdown(props.dropdown)">

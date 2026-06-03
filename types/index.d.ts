@@ -5,6 +5,7 @@ export interface DropdownOptions {
 	inline?: boolean;
 	position?: "top" | "right" | "bottom" | "left";
 	align?: "start" | "center" | "end";
+	autoFit?: boolean;
 	css?: string;
 	width?: string | "unset" | "auto";
 	trackScroll?: boolean;
@@ -22,6 +23,7 @@ export declare const Avatar: DefineComponent<{
 	value: IUser | IUser[];
 	size?: number;
 	limit?: number;
+	css?: string;
 }>;
 
 export declare const TextArea: DefineComponent<{
@@ -29,9 +31,11 @@ export declare const TextArea: DefineComponent<{
 	id?: string | number;
 	placeholder?: string;
 	title?: string;
+	tooltip?: string;
 	disabled?: boolean;
 	error?: boolean;
 	readonly?: boolean;
+	css?: string;
 	onchange?: (ev: { value: string; input?: boolean }) => void;
 }>;
 
@@ -49,6 +53,7 @@ export declare const Button: DefineComponent<{
 	icon?: string;
 	disabled?: boolean;
 	title?: string;
+	tooltip?: string;
 	text?: string;
 	children?: () => any;
 	onclick?: (ev: MouseEvent) => void;
@@ -59,8 +64,8 @@ export declare const Checkbox: DefineComponent<{
 	label?: string;
 	inputValue?: string | number;
 	value?: boolean;
-	style?: string;
 	disabled?: boolean;
+	css?: string;
 	onchange?: (ev: { value: boolean; inputValue: string | number }) => void;
 }>;
 
@@ -68,6 +73,7 @@ export declare const CheckboxGroup: DefineComponent<{
 	options?: { id: string | number; label: string }[];
 	value?: (string | number)[];
 	type?: "inline" | "grid";
+	css?: string;
 	onchange?: (ev: { value: (string | number)[] }) => void;
 }>;
 
@@ -78,14 +84,18 @@ export declare const ColorSelect: DefineComponent<{
 	clear?: boolean;
 	placeholder?: string;
 	title?: string;
+	tooltip?: string;
 	disabled?: boolean;
 	error?: boolean;
+	css?: string;
+	dropdown?: DropdownOptions;
 	onchange?: (ev: { value: string }) => void;
 }>;
 
 export declare const ColorBoard: DefineComponent<{
 	value?: string;
 	button?: boolean;
+	css?: string;
 	onchange?: (ev: { value: string; input?: boolean }) => void;
 }>;
 
@@ -94,9 +104,11 @@ export declare const ColorPicker: DefineComponent<{
 	id?: string | number;
 	placeholder?: string;
 	title?: string;
+	tooltip?: string;
 	disabled?: boolean;
 	error?: boolean;
 	clear?: boolean;
+	css?: string;
 	dropdown?: DropdownOptions;
 	onchange?: (ev: { value: string }) => void;
 }>;
@@ -109,9 +121,11 @@ export declare const Combo: DefineComponent<{
 	textField?: string;
 	placeholder?: string;
 	title?: string;
+	tooltip?: string;
 	disabled?: boolean;
 	error?: boolean;
 	clear?: boolean;
+	css?: string;
 	dropdown?: DropdownOptions & {
 		virtualized?: boolean;
 	};
@@ -124,13 +138,12 @@ export declare const DatePicker: DefineComponent<{
 	id?: string | number;
 	disabled?: boolean;
 	error?: boolean;
-	width?: string;
-	align?: "start" | "center" | "end";
 	placeholder?: string;
 	format?: string | ((value: Date) => string);
 	buttons?: boolean | ("clear" | "today")[];
 	css?: string;
 	title?: string;
+	tooltip?: string;
 	editable?: boolean | ((value: string) => Date | null);
 	clear?: boolean;
 	dropdown?: DropdownOptions;
@@ -142,11 +155,10 @@ export declare const DateRangePicker: DefineComponent<{
 	id?: string | number;
 	disabled?: boolean;
 	error?: boolean;
-	width?: string;
-	align?: "start" | "center" | "end";
 	placeholder?: string;
 	css?: string;
 	title?: string;
+	tooltip?: string;
 	format?: string | ((date: Date) => string);
 	months?: 1 | 2;
 	buttons?: boolean | ("clear" | "today" | "done")[];
@@ -167,6 +179,7 @@ export declare const Fullscreen: DefineComponent<{
 export declare const Icon: DefineComponent<{
 	css?: string;
 	title?: string;
+	tooltip?: string;
 	children?: () => any;
 	onclick?: (ev: MouseEvent) => void;
 }>;
@@ -177,11 +190,14 @@ export declare const MultiCombo: DefineComponent<{
 	options?: { id: string | number; label: string }[];
 	textOptions?: { id: string | number; label: string }[];
 	textField?: string;
+	keepText?: boolean;
 	placeholder?: string;
 	title?: string;
+	tooltip?: string;
 	disabled?: boolean;
 	error?: boolean;
 	checkboxes?: boolean;
+	css?: string;
 	dropdown?: DropdownOptions & {
 		virtualized?: boolean;
 	};
@@ -194,6 +210,9 @@ export declare const Popup: DefineComponent<{
 	top?: number;
 	at?: TPosition;
 	parent?: HTMLElement;
+	width?: string;
+	css?: string;
+	trackScroll?: boolean;
 	children?: () => any;
 	oncancel?: (ev: MouseEvent) => void;
 }>;
@@ -209,6 +228,7 @@ export declare const Pager: DefineComponent<{
 	total?: number;
 	pageSize?: number;
 	value?: number;
+	css?: string;
 	onchange?: (ev: { value: number; from: number; to: number }) => void;
 }>;
 
@@ -219,6 +239,7 @@ export declare const RadioButton: DefineComponent<{
 	name?: string;
 	inputValue?: string | number;
 	disabled?: boolean;
+	css?: string;
 	onchange?: (ev: { value: boolean; inputValue: string | number }) => void;
 }>;
 
@@ -226,6 +247,7 @@ export declare const RadioButtonGroup: DefineComponent<{
 	options?: { id: string | number; label: string }[];
 	value?: string | number;
 	type?: "inline" | "grid";
+	css?: string;
 	onchange?: (ev: { value: string | number }) => void;
 }>;
 
@@ -237,8 +259,10 @@ export declare const RichSelect: DefineComponent<{
 	disabled?: boolean;
 	error?: boolean;
 	title?: string;
+	tooltip?: string;
 	textField?: string;
 	clear?: boolean;
+	css?: string;
 	dropdown?: DropdownOptions & {
 		virtualized?: boolean;
 	};
@@ -252,6 +276,7 @@ export declare const Segmented: DefineComponent<{
 		label: string;
 		icon?: string;
 		title?: string;
+		tooltip?: string;
 	}[];
 	value?: string | number;
 	css?: string;
@@ -264,11 +289,13 @@ export declare const Select: DefineComponent<{
 	options?: { id: string | number; label: string }[];
 	placeholder?: string;
 	title?: string;
+	tooltip?: string;
 	disabled?: boolean;
 	error?: boolean;
 	textField?: string;
 	clear?: boolean;
 	id?: string | number;
+	css?: string;
 	onchange?: (ev: { value: string | number }) => void;
 }>;
 
@@ -281,7 +308,9 @@ export declare const Slider: DefineComponent<{
 	value?: number;
 	step?: number;
 	title?: string;
+	tooltip?: string;
 	disabled?: boolean;
+	css?: string;
 	onchange?: (ev: {
 		value: number;
 		previous: number;
@@ -293,6 +322,7 @@ export declare const Switch: DefineComponent<{
 	id?: string | number;
 	value?: boolean;
 	disabled?: boolean;
+	css?: string;
 	onchange?: (ev: { value: boolean }) => void;
 }>;
 
@@ -301,10 +331,12 @@ export declare const Tabs: DefineComponent<{
 		id: string | number;
 		label?: string;
 		title?: string;
+		tooltip?: string;
 		icon?: string;
 	}[];
 	value?: string | number;
 	type?: "top" | "bottom";
+	css?: string;
 	onchange?: (ev: { value: string | number }) => void;
 }>;
 
@@ -318,8 +350,8 @@ export declare const Text: DefineComponent<{
 	placeholder?: string;
 	disabled?: boolean;
 	error?: boolean;
-	inputStyle?: string;
 	title?: string;
+	tooltip?: string;
 	css?: string;
 	icon?: string;
 	clear?: boolean;
@@ -335,6 +367,8 @@ export declare const Counter: DefineComponent<{
 	error?: boolean;
 	disabled?: boolean;
 	readonly?: boolean;
+	css?: string;
+	tooltip?: string;
 	onchange?: (ev: { value: number; input?: boolean }) => void;
 }>;
 
@@ -345,6 +379,8 @@ export declare const Field: DefineComponent<{
 	error?: boolean;
 	type?: "checkbox" | "slider" | "switch";
 	required?: boolean;
+	id?: string | number;
+	css?: string;
 	children?: () => any;
 }>;
 
@@ -353,6 +389,7 @@ export declare const Calendar: DefineComponent<{
 	current?: Date;
 	markers?: (date: Date) => string;
 	buttons?: boolean | ("clear" | "today")[];
+	css?: string;
 	onchange?: (ev: { value: Date | null }) => void;
 }>;
 
@@ -372,6 +409,7 @@ export declare const RangeCalendar: DefineComponent<{
 	months?: 1 | 2;
 	markers?: (date: Date) => string;
 	buttons?: boolean | ("clear" | "today" | "done")[];
+	css?: string;
 	onchange?: (ev: { start: Date | null; end: Date | null }) => void;
 }>;
 
@@ -379,6 +417,7 @@ export declare const TimePicker: DefineComponent<{
 	value?: Date;
 	id?: string | number;
 	title?: string;
+	tooltip?: string;
 	css?: string;
 	disabled?: boolean;
 	error?: boolean;
@@ -402,6 +441,7 @@ export declare const TwoState: DefineComponent<{
 	disabled?: boolean;
 	iconActive?: string;
 	title?: string;
+	tooltip?: string;
 	css?: string;
 	text?: string;
 	textActive?: string;
@@ -414,8 +454,9 @@ export declare const TwoState: DefineComponent<{
 export declare const Modal: DefineComponent<{
 	title?: string;
 	buttons?: boolean | string[];
-	header?: any;
-	footer?: any;
+	header?: () => any;
+	footer?: () => any;
+	css?: string;
 	children?: () => any;
 	onconfirm?: (ev: { button?: string; event: MouseEvent }) => void;
 	oncancel?: (ev: { button?: string; event: MouseEvent }) => void;
@@ -427,6 +468,7 @@ export declare const ModalArea: DefineComponent<{
 
 export declare const SideArea: DefineComponent<{
 	position?: "right";
+	css?: string;
 	children?: () => any;
 	oncancel?: () => void;
 }>;
@@ -489,3 +531,25 @@ export declare const locale: {
 export declare const en: Record<string, any>;
 
 export declare function popupContainer(node: HTMLElement): void;
+
+export type TPositionNoFit = Exclude<
+	TPosition,
+	"bottom-fit" | "top-fit" | "center-fit"
+>;
+
+export type TooltipResolver = (
+	element: HTMLElement,
+	event: MouseEvent
+) => Record<string, any> | string | null;
+
+export declare const Tooltip: DefineComponent<{
+	at?: TPositionNoFit;
+	arrow?: boolean;
+	touch?: boolean;
+	overflow?: boolean;
+	delay?: number;
+	content?: DefineComponent<Record<string, any>> | null;
+	resolver?: TooltipResolver;
+	children?: () => any;
+	css?: string;
+}>;

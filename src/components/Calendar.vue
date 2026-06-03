@@ -11,6 +11,7 @@ const current = defineModel("current");
 const props = defineProps({
   markers: { default: null },
   buttons: { default: () => ["clear", "today"] },
+  css: { default: "" },
   onchange: {}
 });
 
@@ -42,6 +43,7 @@ function change(v) {
       v-model:current="current"
       :markers="props.markers"
       :buttons="props.buttons"
+      :css="props.css"
       :onchange="change"
     />
   </Locale>

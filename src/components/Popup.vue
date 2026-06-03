@@ -22,6 +22,7 @@ const x = ref(0)
 const y = ref(0)
 const w = ref('auto')
 let portal
+let resizeObserver
 
 function getWidth(calcWidth) {
   if (props.parent && (props.width + '').indexOf('%') > -1) {
@@ -55,12 +56,17 @@ onMounted(() => {
       portal = getAbsParent(self.value)
       if (portal) portal.addEventListener('scroll', onScroll, true)
     }
+    if (props.parent) {
+      resizeObserver = new ResizeObserver(updatePosition)
+      resizeObserver.observe(props.parent)
+    }
   })
 })
 
 onUnmounted(() => {
   if (props.trackScroll && portal)
     portal.removeEventListener('scroll', onScroll, true)
+  if (resizeObserver) resizeObserver.disconnect()
 })
 
 watchEffect(() => {
@@ -74,7 +80,7 @@ function down(e) {
 
 <template>
   <div
-    v-click-outside="down"
+    v-click-outside="{ callback: down, parent: () => props.parent }"
     ref="self"
     :class="['wx-popup', css]"
     :style="{ position: 'absolute', top: y + 'px', left: x + 'px', width: w }"

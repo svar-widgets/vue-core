@@ -11,6 +11,7 @@ const props = defineProps({
   iconActive: { default: '' },
   onclick: {},
   title: { default: '' },
+  tooltip: {},
   css: { default: '' },
   text: { default: '' },
   textActive: { default: '' },
@@ -39,6 +40,7 @@ function handleClick(ev) {
   <Button
     v-if="value && $slots.active"
     :title="props.title"
+    :tooltip="props.tooltip"
     :text="(value && props.textActive) || props.text"
     :css="props.css"
     :type="typeStr"
@@ -51,6 +53,7 @@ function handleClick(ev) {
   <Button
     v-else-if="$slots.default"
     :title="props.title"
+    :tooltip="props.tooltip"
     :text="(value && props.textActive) || props.text"
     :css="props.css"
     :type="typeStr"
@@ -63,6 +66,7 @@ function handleClick(ev) {
   <Button
     v-else
     :title="props.title"
+    :tooltip="props.tooltip"
     :text="(value && props.textActive) || props.text"
     :css="props.css"
     :type="typeStr"

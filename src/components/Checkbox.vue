@@ -7,8 +7,8 @@ const props = defineProps({
   id: {},
   label: { default: "" },
   inputValue: { default: "" },
-  style: { default: "" },
   disabled: { default: false },
+  css: { default: "" },
   onchange: {}
 });
 
@@ -25,7 +25,7 @@ function handlerChange({ target }) {
 </script>
 
 <template>
-  <div :style="props.style" class="wx-checkbox">
+  <div :class="['wx-checkbox', props.css]">
       <input
         type="checkbox"
         :id="inputId"
@@ -139,6 +139,11 @@ function handlerChange({ target }) {
 	}
 	input[disabled] ~ label span:first-child:after {
 		border-color: var(--wx-input-background);
+	}
+
+	.wx-list-checkbox {
+		margin-right: 8px;
+		pointer-events: none;
 	}
 
 </style>

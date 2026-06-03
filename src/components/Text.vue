@@ -13,8 +13,8 @@ const props = defineProps({
   placeholder: { default: "" },
   disabled: { default: false },
   error: { default: false },
-  inputStyle: { default: "" },
   title: { default: "" },
+  tooltip: {},
   css: { default: "" },
   icon: { default: "" },
   clear: { default: false },
@@ -62,6 +62,7 @@ function clearValue(ev) {
         'wx-clear': props.clear
       }
     ]"
+    :data-tooltip-text="props.tooltip"
   >
     <template v-if="props.type == 'password'">
       <input
@@ -71,7 +72,6 @@ function clearValue(ev) {
         :disabled="props.disabled"
         :placeholder="props.placeholder"
         type="password"
-        :style="props.inputStyle"
         :title="props.title"
         v-model="value"
         @input="oninput"
@@ -86,7 +86,6 @@ function clearValue(ev) {
         :disabled="props.disabled"
         :placeholder="props.placeholder"
         type="number"
-        :style="props.inputStyle"
         :title="props.title"
         v-model="value"
         @input="oninput"
@@ -101,7 +100,6 @@ function clearValue(ev) {
         :disabled="props.disabled"
         :placeholder="props.placeholder"
         :title="props.title"
-        :style="props.inputStyle"
         v-model="value"
         @input="oninput"
         @change="change"
@@ -215,6 +213,13 @@ function clearValue(ev) {
 	.wx-error input {
 		border-color: var(--wx-color-danger);
 		color: var(--wx-color-danger);
+	}
+	.wx-date-input input {
+		cursor: pointer;
+		width: 100%;
+		padding-right: calc(
+			var(--wx-input-icon-size) + var(--wx-input-icon-indent) * 2
+		);
 	}
 
 </style>

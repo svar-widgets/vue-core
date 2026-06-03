@@ -23,8 +23,10 @@ const props = defineProps({
   clear: { default: false },
   placeholder: { default: "" },
   title: { default: "" },
+  tooltip: {},
   disabled: { default: false },
   error: { default: false },
+  css: { default: "" },
   onchange: {},
   dropdown: { default: () => ({}) },
 });
@@ -56,7 +58,11 @@ function closePopup() {
 </script>
 
 <template>
-  <div class="wx-colorselect" @click="handlePopup">
+  <div
+    :class="['wx-colorselect', props.css]"
+    @click="handlePopup"
+    :data-tooltip-text="props.tooltip"
+  >
     <input
       :title="props.title"
       :value="value"

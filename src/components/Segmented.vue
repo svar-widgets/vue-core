@@ -30,6 +30,7 @@ function handleClick(id) {
       :css="option.css"
       :title="option.title"
       :class="{ 'wx-selected': option.id == value }"
+      :data-tooltip-text="option.tooltip"
       @click="handleClick(option.id)"
     >
       <slot v-if="hasSlot" :option="option" />

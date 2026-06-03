@@ -14,6 +14,7 @@ const vSliderMove = asDirective(sliderMove);
 
 const props = defineProps({
   button: { default: false },
+  css: { default: '' },
   onchange: {}
 });
 const value = defineModel("value", { default: "" });
@@ -168,7 +169,7 @@ function keydown(ev) {
 </script>
 
 <template>
-  <div class="wx-colorboard">
+  <div :class="['wx-colorboard', css]">
     <div
       class="wx-color-block"
       :style="{ background: blockColor }"

@@ -14,6 +14,7 @@ const props = defineProps({
   part: { default: 'normal' },
   markers: { default: null },
   buttons: { default: () => ['clear', 'today'] },
+  css: { default: '' },
   onshift: {},
   onchange: {},
 })
@@ -67,7 +68,7 @@ const ActiveComponent = computed(() => configs[type.value].component)
 </script>
 
 <template>
-  <div class="wx-calendar" :class="props.part !== 'normal' && props.part !== 'both' ? 'wx-part' : ''">
+  <div class="wx-calendar" :class="[props.part !== 'normal' && props.part !== 'both' ? 'wx-part' : '', props.css]">
     <div class="wx-wrap">
       <Header :date="current" :part="props.part" :type="type" :onshift="handleShift" />
       <div>

@@ -6,6 +6,7 @@ defineOptions({ name: "CorePager", inheritAttrs: false });
 
 const props = defineProps({
   total: { default: 0 },
+  css: { default: "" },
   onchange: {},
 });
 
@@ -61,7 +62,7 @@ const onPageSizeInput = (e) => {
 </script>
 
 <template>
-  <div class="wx-pager">
+  <div :class="['wx-pager', css]">
     <div class="wx-left">
       <span>{{ _("Rows per page") }}: </span>
       <input

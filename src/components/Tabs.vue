@@ -4,6 +4,7 @@ defineOptions({ name: 'CoreTabs', inheritAttrs: false })
 const props = defineProps({
   options: { default: () => [] },
   type: { default: 'top' },
+  css: { default: '' },
   onchange: {}
 })
 
@@ -16,11 +17,12 @@ function selectTab(id) {
 </script>
 
 <template>
-  <div :class="['wx-tabs', `wx-${props.type}`]">
+  <div :class="['wx-tabs', `wx-${props.type}`, props.css]">
     <button
       v-for="option in props.options" :key="option.id"
       :class="{ 'wx-active': option.id == value }"
       :title="option.title"
+      :data-tooltip-text="option.tooltip"
       @click="selectTab(option.id)"
     >
       <i

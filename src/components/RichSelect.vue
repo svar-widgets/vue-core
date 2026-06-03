@@ -11,8 +11,10 @@ const props = defineProps({
   disabled: { default: false },
   error: { default: false },
   title: { default: "" },
+  tooltip: {},
   textField: { default: "label" },
   clear: { default: false },
+  css: { default: "" },
   onchange: {},
   dropdown: { default: () => ({}) }
 });
@@ -59,12 +61,12 @@ const hasKids = computed(() => !!slots.default);
 
 <template>
   <div
-    class="wx-richselect"
+    :class="['wx-richselect', props.css, { 'wx-error': props.error, 'wx-disabled': props.disabled, 'wx-nowrap': !hasKids }]"
     :title="props.title"
-    :class="{ 'wx-error': props.error, 'wx-disabled': props.disabled, 'wx-nowrap': !hasKids }"
     @click="navigate?.(index())"
     @keydown="ev => keydown?.(ev, index())"
     tabindex="0"
+    :data-tooltip-text="props.tooltip"
   >
     <div class="wx-label">
       <template v-if="selected">

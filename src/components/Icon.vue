@@ -6,6 +6,7 @@ defineOptions({ name: 'CoreIcon' });
 const props = defineProps({
   css: { default: '' },
   title: { default: '' },
+  tooltip: {},
   onclick: {},
 });
 
@@ -19,6 +20,7 @@ const hasChildren = computed(() => !!slots.default);
     role="img"
     :title="props.title"
     :class="['wx-icon', props.css]"
+    :data-tooltip-text="props.tooltip"
     @click="props.onclick"
   >
     <slot />
@@ -27,6 +29,7 @@ const hasChildren = computed(() => !!slots.default);
     v-else
     :title="props.title"
     :class="['wx-icon', props.css]"
+    :data-tooltip-text="props.tooltip"
     @click="props.onclick"
   ></i>
 </template>

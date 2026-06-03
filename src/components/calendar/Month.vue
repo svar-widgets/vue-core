@@ -10,6 +10,7 @@ const props = defineProps({
   value: {},
   part: { default: '' },
   markers: { default: null },
+  css: { default: '' },
   oncancel: {},
   onchange: {},
 });
@@ -104,7 +105,7 @@ const vDelegateClick = asDirective(delegateClick);
 </script>
 
 <template>
-  <div>
+  <div :class="['wx-month', css]">
     <div class="wx-weekdays">
       <div class="wx-weekday" v-for="day in weekdays" :key="day">{{ day }}</div>
     </div>

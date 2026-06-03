@@ -1,6 +1,6 @@
 <script setup>
 defineOptions({ name: "DemoIndex" });
-import { ref, computed, provide, onMounted, watch } from "vue";
+import { ref, computed, provide, onMounted, watch, watchEffect } from "vue";
 
 import Router from "./Router.vue";
 import Link from "./Link.vue";
@@ -54,8 +54,8 @@ watch([isMobileView, title], ([mobile, t]) => {
 	if (mobile && t) show.value = false;
 });
 
-onMounted(() => {
-	document.body.className = `wx-willow-theme`;
+watchEffect(() => {
+	document.body.className = `wx-${skin.value}-theme`;
 });
 </script>
 
@@ -208,16 +208,47 @@ onMounted(() => {
 	font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
-.page-header {
-	--wx-border: 1px solid #ebebeb;
+:global(.wx-willow-theme) {
+	--demo-bg: #fbfbfb;
+	--demo-border: #ebebeb;
+	--demo-fg: #42454d;
+	--demo-fg-strong: #2c2f3c;
+	--demo-btn-hover-bg: #f7f7f7;
+	--demo-btn-active-bg: #f1f1f1;
+	--demo-segmented-selected-bg: #ffffff;
+	--demo-link-fg: #595b66;
+	--demo-link-active-fg: #42454d;
+	--demo-link-active-bg: #f1f1f1;
+	--demo-icon-filter: none;
+}
+
+:global(.wx-willow-dark-theme) {
+	--demo-bg: #222224;
+	--demo-border: #384047;
+	--demo-fg: rgba(255, 255, 255, 0.9);
+	--demo-fg-strong: #ffffff;
+	--demo-btn-hover-bg: rgba(255, 255, 255, 0.04);
+	--demo-btn-active-bg: rgba(255, 255, 255, 0.08);
+	--demo-segmented-bg: #30373d;
+	--demo-segmented-selected-bg: #48535c;
+	--demo-link-fg: rgba(255, 255, 255, 0.9);
+	--demo-link-active-fg: #ffffff;
+	--demo-link-active-bg: #384047;
+	--demo-icon-filter: brightness(0) invert(1);
 }
 
 .layout {
 	--demo-framework-color: #079C69;
+	--wx-border: 1px solid var(--demo-border);
+	--demo-segmented-selected-shadow: 0 0 7px 0 rgba(66, 69, 76, 0.07);
 	box-sizing: border-box;
 	display: flex;
 	height: 100%;
 	width: 100%;
+}
+
+.page-header {
+	background-color: var(--demo-bg);
 }
 
 .page-content {
@@ -307,7 +338,7 @@ onMounted(() => {
 	position: sticky;
 	top: 0px;
 	padding: 14px 16px 14px 18px;
-	background-color: #fbfbfb;
+	background-color: var(--demo-bg);
 }
 
 .box-title {
@@ -330,7 +361,7 @@ onMounted(() => {
 .separator {
 	width: 1px;
 	height: 20px;
-	background: #ebebeb;
+	background: var(--demo-border);
 }
 
 .sidebar.active,
@@ -352,7 +383,7 @@ onMounted(() => {
 	overflow-y: auto;
 	font-size: 16px;
 	line-height: 20px;
-	background-color: #fbfbfb;
+	background-color: var(--demo-bg);
 	border-bottom: var(--wx-border);
 }
 
@@ -361,21 +392,21 @@ onMounted(() => {
 	align-items: center;
 	gap: 8px;
 	border: var(--wx-border);
-	color: #2c2f3c;
+	color: var(--demo-fg-strong);
 	font-weight: 500;
 	line-height: 18px;
 }
 .btn-box :deep(button.toggle-btn:hover),
 .btn-box :deep(button.toggle-btn:focus) {
 	border: var(--wx-border);
-	background: #f7f7f7;
+	background: var(--demo-btn-hover-bg);
 }
 .btn-box :deep(button.toggle-btn:active) {
-	background: #f1f1f1;
+	background: var(--demo-btn-active-bg);
 }
 .btn-box :deep(i) {
 	opacity: 1;
-	color: #42454d;
+	color: var(--demo-fg);
 }
 
 .btn-box :deep(button.toggle-btn.link-btn) {
@@ -403,6 +434,7 @@ onMounted(() => {
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
+	filter: var(--demo-icon-filter);
 }
 
 a {
@@ -487,7 +519,7 @@ a {
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 24px;
-	color: #42454d;
+	color: var(--demo-fg);
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -498,7 +530,7 @@ a {
 	font-size: 18px;
 	font-weight: 500;
 	line-height: 24px;
-	color: #42454d;
+	color: var(--demo-fg);
 	white-space: nowrap;
 }
 
@@ -522,8 +554,8 @@ a {
 	border-radius: 2px;
 	font-weight: 500;
 	color: var(--wx-color-font);
-	background: #fff;
-	box-shadow: 0px 0px 7px 0px rgba(66, 69, 76, 0.07);
+	background: var(--demo-segmented-selected-bg);
+	box-shadow: var(--demo-segmented-selected-shadow);
 }
 
 .layout :deep(div.segmented-themes svg) {
@@ -540,5 +572,9 @@ a {
 .narrow .segmented-box :deep(div.segmented-themes button svg) {
 	height: 24px;
 	width: 24px;
+}
+
+:global(.wx-willow-dark-theme) .segmented-box :deep(div.segmented-themes) {
+	background-color: var(--demo-segmented-bg);
 }
 </style>

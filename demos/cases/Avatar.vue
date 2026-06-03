@@ -224,7 +224,7 @@ const stackOverflowMixed = [
 	overflow: auto;
 	min-width: 80px;
 	max-width: 100%;
-	border: 1px dashed #ccc;
+	border: 1px dashed var(--wx-border-color);
 	padding: 8px;
 }
 </style>

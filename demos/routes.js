@@ -14,6 +14,7 @@ import DateRangePicker from "./cases/DateRangePicker.vue";
 import Fullscreen from "./cases/Fullscreen.vue";
 import Dropdown from "./cases/Dropdown.vue";
 import DropdownScroll from "./cases/DropdownScroll.vue";
+import Tooltips from "./cases/Tooltips.vue";
 import Locales from "./cases/Locales.vue";
 import Messages from "./cases/Messages.vue";
 import TwoState from "./cases/TwoState.vue";
@@ -78,6 +79,7 @@ export const links = [
 	["/textarea/:skin", "TextArea", TextArea, "TextArea"],
 	["/counter/:skin", "Counter Input", Counter, "Counter"],
 	["/timepicker/:skin", "TimePicker", TimePicker, "TimePicker"],
+	["/tooltips/:skin", "Tooltips", Tooltips, "Tooltips"],
 	["/twostate/:skin", "Two State", TwoState, "TwoState"],
 	["/icon/:skin", "Icon", Icon, "Icon"],
 	["/sidearea/:skin", "Side Area", SideArea, "SideArea"],

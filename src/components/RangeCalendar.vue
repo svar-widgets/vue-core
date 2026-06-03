@@ -13,6 +13,7 @@ const props = defineProps({
   months: { default: 2 },
   markers: { default: null },
   buttons: { default: () => ["clear", "today"] },
+  css: { default: "" },
   onchange: {},
 });
 
@@ -95,12 +96,13 @@ function selectChange(ev) {
         v-model:current="leftCurrent"
         :markers="props.markers"
         :buttons="props.buttons"
+        :css="props.css"
         part="both"
         :onchange="doChangeStart"
       />
     </template>
     <template v-else>
-      <div class="wx-rangecalendar">
+      <div :class="['wx-rangecalendar', props.css]">
         <div class="wx-half">
           <Panel
             :value="{ start, end }"

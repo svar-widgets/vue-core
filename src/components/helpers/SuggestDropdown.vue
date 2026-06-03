@@ -158,6 +158,14 @@ watch(
   { immediate: true }
 );
 
+watch(
+  () => props.items,
+  () => {
+    if (props.virtualized) scrollTop.value = 0;
+  },
+  { immediate: true }
+);
+
 onMounted(() => {
   if (props.onready)
     props.onready({
@@ -204,7 +212,7 @@ onMounted(() => {
                 >
                   <Checkbox
                     v-if="props.checkboxes"
-                    style="margin-right: 8px; pointer-events: none;"
+                    css="wx-list-checkbox"
                     :name="data.id"
                     :value="props.value && props.value.includes(data.id)"
                   />
@@ -218,7 +226,7 @@ onMounted(() => {
                 >
                   <Checkbox
                     v-if="props.checkboxes"
-                    style="margin-right: 8px; pointer-events: none;"
+                    css="wx-list-checkbox"
                     :name="data.id"
                     :value="props.value && props.value.includes(data.id)"
                   />
@@ -242,7 +250,7 @@ onMounted(() => {
             >
               <Checkbox
                 v-if="props.checkboxes"
-                style="margin-right: 8px; pointer-events: none;"
+                css="wx-list-checkbox"
                 :name="data.id"
                 :value="props.value && props.value.includes(data.id)"
               />
@@ -256,7 +264,7 @@ onMounted(() => {
             >
               <Checkbox
                 v-if="props.checkboxes"
-                style="margin-right: 8px; pointer-events: none;"
+                css="wx-list-checkbox"
                 :name="data.id"
                 :value="props.value && props.value.includes(data.id)"
               />

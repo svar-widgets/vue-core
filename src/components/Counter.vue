@@ -11,6 +11,8 @@ const props = defineProps({
   error: { default: false },
   disabled: { default: false },
   readonly: { default: false },
+  css: { default: '' },
+  tooltip: {},
   onchange: { default: undefined }
 });
 
@@ -46,12 +48,12 @@ function input(e) {
 
 <template>
   <div
-    class="wx-counter"
-    :class="{
+    :class="['wx-counter', props.css, {
       'wx-disabled': props.disabled,
       'wx-readonly': props.readonly,
       'wx-error': props.error
-    }"
+    }]"
+    :data-tooltip-text="props.tooltip"
   >
     <button aria-label="-" class="wx-btn wx-btn-dec" :disabled="props.disabled" @click="dec">
       <svg

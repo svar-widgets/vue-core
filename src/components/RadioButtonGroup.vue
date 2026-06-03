@@ -8,6 +8,7 @@ defineOptions({ name: "CoreRadioButtonGroup", inheritAttrs: false });
 const props = defineProps({
   options: { default: () => [{}] },
   type: { default: "" },
+  css: { default: "" },
   onchange: {},
 });
 
@@ -24,7 +25,7 @@ function handleChange(ev) {
 </script>
 
 <template>
-  <div class="wx-radiogroup" :class="props.type && `wx-${props.type}`">
+  <div class="wx-radiogroup" :class="[props.type && `wx-${props.type}`, props.css]">
     <div class="wx-item" v-for="option in props.options" :key="option.id">
       <RadioButton
         :label="option.label"

@@ -6,6 +6,7 @@ defineOptions({ name: "CoreSwitch", inheritAttrs: false });
 const props = defineProps({
   id: {},
   disabled: { default: false },
+  css: { default: "" },
   onchange: { default: undefined },
 });
 
@@ -20,7 +21,7 @@ function onChange(event) {
 </script>
 
 <template>
-  <label class="wx-switch">
+  <label :class="['wx-switch', props.css]">
     <input
       type="checkbox"
       :checked="value"

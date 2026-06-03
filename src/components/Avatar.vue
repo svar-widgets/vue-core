@@ -7,6 +7,7 @@ const props = defineProps({
 	value: {},
 	size: { default: 32 },
 	limit: {},
+	css: { default: "" },
 });
 
 const DEFAULT_BG = "#dfe2e6";
@@ -95,7 +96,7 @@ function getAvatarItemStyle(user, index) {
 </script>
 
 <template>
-	<div class="wx-avatar-root" ref="containerEl">
+	<div :class="['wx-avatar-root', props.css]" ref="containerEl">
 		<div v-if="displayUsers.length > 0" class="wx-avatar-stack">
 			<div
 				v-for="(user, index) in displayUsers"

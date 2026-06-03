@@ -6,6 +6,7 @@ defineOptions({ name: "CoreSideArea" });
 
 const props = defineProps({
   position: { default: "right" },
+  css: { default: "" },
   oncancel: {}
 });
 
@@ -15,7 +16,7 @@ const vClickOutside = asDirective(clickOutside);
 <template>
   <div
     v-click-outside="() => props.oncancel && props.oncancel()"
-    :class="['wx-sidearea', `wx-pos-${props.position}`]"
+    :class="['wx-sidearea', `wx-pos-${props.position}`, props.css]"
   >
     <slot />
   </div>

@@ -12,7 +12,9 @@ const props = defineProps({
   max: { default: 100 },
   step: { default: 1 },
   title: { default: "" },
+  tooltip: {},
   disabled: { default: false },
+  css: { default: "" },
   onchange: {}
 });
 
@@ -44,7 +46,12 @@ function change({ target }) {
 </script>
 
 <template>
-  <div class="wx-slider" :style="props.width ? `width: ${props.width}` : ''" :title="props.title">
+  <div
+    :class="['wx-slider', props.css]"
+    :style="props.width ? `width: ${props.width}` : ''"
+    :title="props.title"
+    :data-tooltip-text="props.tooltip"
+  >
     <label v-if="props.label" :for="props.id">{{ props.label }}</label>
     <div>
       <input

@@ -11,6 +11,7 @@ const props = defineProps({
   header: {},
   children: {},
   footer: {},
+  css: { default: "" },
   onconfirm: {},
   oncancel: {},
 });
@@ -49,7 +50,7 @@ onMounted(() => {
 <template>
   <transition name="wx-modal-overlay-fade" appear>
     <div
-      class="wx-modal"
+      :class="['wx-modal', props.css]"
       ref="modal"
       tabindex="0"
       @keydown="keydown"

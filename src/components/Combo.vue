@@ -12,10 +12,12 @@ const props = defineProps({
   textField: { default: 'label' },
   placeholder: { default: '' },
   title: { default: '' },
+  tooltip: {},
   disabled: { default: false },
   error: { default: false },
   clear: { default: false },
-  onchange: {},
+  css: { default: '' },
+  onchange: { type: Function },
   dropdown: { default: () => ({}) }
 })
 
@@ -124,7 +126,7 @@ function onblur() {
 </script>
 
 <template>
-  <div class="wx-combo" @click="onclick" @keydown="onkeydown" :title="props.title">
+  <div :class="['wx-combo', props.css]" @click="onclick" @keydown="onkeydown" :title="props.title" :data-tooltip-text="props.tooltip">
     <input
       :id="inputId"
       ref="inputElement"

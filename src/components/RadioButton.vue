@@ -9,6 +9,7 @@ const props = defineProps({
   name: { default: "" },
   inputValue: { default: "" },
   disabled: { default: false },
+  css: { default: "" },
   onchange: {},
 });
 
@@ -25,7 +26,7 @@ function handlerChange(ev) {
 </script>
 
 <template>
-  <div class="wx-radio">
+  <div :class="['wx-radio', props.css]">
     <input
       type="radio"
       :id="inputId"

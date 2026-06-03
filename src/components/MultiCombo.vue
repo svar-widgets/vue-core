@@ -10,12 +10,15 @@ const props = defineProps({
   options: { default: () => [] },
   textOptions: { default: null },
   textField: { default: 'label' },
+  keepText: { default: false },
   placeholder: { default: '' },
   title: { default: '' },
+  tooltip: {},
   disabled: { default: false },
   error: { default: false },
   checkboxes: { default: false },
-  onchange: {},
+  css: { default: '' },
+  onchange: { type: Function },
   dropdown: { default: () => ({}) },
 });
 
@@ -54,6 +57,7 @@ function onselect(ev) {
   const { id } = ev;
   if (id) {
     value.value = id;
+    if (!props.keepText) text.value = '';
     props.onchange && props.onchange({ value: id });
     inputElement.value.focus();
   }
@@ -83,15 +87,15 @@ function onclick() {
 <template>
   <div
     :title="props.title"
-    class="wx-multicombo"
-    :class="{
+    :class="['wx-multicombo', props.css, {
       'wx-error': props.error,
       'wx-disabled': props.disabled,
       'wx-not-empty': selected.length,
       'wx-focus': focus && !props.disabled
-    }"
+    }]"
     @click="onclick"
     @keydown="ev => keydownFn(ev, index())"
+    :data-tooltip-text="props.tooltip"
   >
     <div class="wx-wrapper">
       <div class="wx-tags">

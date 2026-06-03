@@ -12,6 +12,7 @@ const props = defineProps({
   type: { default: "" },
   required: { default: false },
   id: {},
+  css: { default: "" },
 });
 
 const inputId = props.id === undefined ? uid() : props.id;
@@ -21,7 +22,7 @@ provide("wx-input-id", inputId);
 
 <template>
   <div
-    :class="['wx-field', `wx-${props.position}`, { 'wx-error': props.error, 'wx-required': props.required }]"
+    :class="['wx-field', `wx-${props.position}`, props.css, { 'wx-error': props.error, 'wx-required': props.required }]"
     :style="props.width ? `width: ${props.width}` : ''"
   >
     <template v-if="props.label">

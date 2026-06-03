@@ -7,11 +7,13 @@ const props = defineProps({
   options: { default: () => [] },
   placeholder: { default: "" },
   title: { default: "" },
+  tooltip: {},
   disabled: { default: false },
   error: { default: false },
   textField: { default: "label" },
   clear: { default: false },
   id: {},
+  css: { default: "" },
   onchange: {},
 });
 
@@ -30,7 +32,7 @@ function handleChange() {
 </script>
 
 <template>
-  <div class="wx-select">
+  <div :class="['wx-select', props.css]" :data-tooltip-text="props.tooltip">
     <select
       :id="inputId"
       v-model="value"
