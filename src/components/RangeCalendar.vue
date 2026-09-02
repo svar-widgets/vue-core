@@ -24,15 +24,20 @@ function addMonth(l, diff, rPrev) {
   return r;
 }
 
-const leftCurrent = ref();
-const rightCurrent = ref();
+function initLeft(startVal, currentVal) {
+  const v = new Date(startVal || currentVal || new Date());
+  v.setDate(1);
+  return v;
+}
+
+const _initLeft = initLeft(start.value, props.current);
+const leftCurrent = ref(_initLeft);
+const rightCurrent = ref(addMonth(_initLeft, 1));
 
 watch(
   () => [start.value, props.current],
   () => {
-    if (!leftCurrent.value) {
-      onLeft(start.value ? new Date(start.value) : props.current || new Date());
-    }
+    onLeft(start.value ? new Date(start.value) : props.current || new Date());
   },
   { immediate: true }
 );

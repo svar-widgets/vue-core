@@ -1,6 +1,6 @@
 {
   "name": "@svar-ui/vue-core",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "SVAR Vue Core library is a collection of customizable Vue UI components and form controls",
   "productTag": "core",
   "type": "module",
@@ -35,8 +35,8 @@
     "dist-full/index.css"
   ],
   "dependencies": {
-    "@svar-ui/core-locales": "2.6.0",
-    "@svar-ui/lib-dom": "0.13.1",
+    "@svar-ui/core-locales": "2.6.1",
+    "@svar-ui/lib-dom": "0.14.0",
     "@svar-ui/lib-vue": "1.1.0"
   },
   "peerDependencies": {
